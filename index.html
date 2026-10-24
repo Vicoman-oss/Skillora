@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Skillora | Student Skills & Side Jobs</title>
+
+  <meta name="description" content="Skillora connects Nigerian students with customers looking for affordable skills and services.">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <header class="site-header">
+    <a href="#" class="logo">Skill<span>ora</span></a>
+
+    <nav>
+      <a href="#services">Explore Services</a>
+      <a href="#how-it-works">How It Works</a>
+      <button id="postServiceBtn" class="button button-primary">
+        Post a Service
+      </button>
+    </nav>
+  </header>
+
+  <main>
+
+    <section class="hero">
+      <p class="eyebrow">STUDENT SKILLS. REAL OPPORTUNITIES.</p>
+
+      <h1>Turn Your Skills Into <span>Opportunities.</span></h1>
+
+      <p class="hero-description">
+        Discover services, showcase your talents, and connect with
+        people looking for skilled students across Nigeria.
+      </p>
+
+      <div class="hero-actions">
+        <a href="#services" class="button button-primary">
+          Explore Services
+        </a>
+
+        <button id="heroPostBtn" class="button button-outline">
+          Offer Your Skills
+        </button>
+      </div>
+
+      <p class="demo-notice">
+        School project preview: listings are examples, not verified jobs.
+      </p>
+    </section>
+
+    <section class="services-section" id="services">
+
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">DISCOVER TALENT</p>
+          <h2>Find the Right Skills</h2>
+        </div>
+
+        <p>Explore services offered by student freelancers.</p>
+      </div>
+
+      <div class="search-area">
+        <input
+          type="search"
+          id="searchInput"
+          placeholder="Search design, tutoring, writing..."
+          aria-label="Search services"
+        >
+
+        <select id="categoryFilter" aria-label="Filter by category">
+          <option value="all">All categories</option>
+          <option value="Design">Graphic Design</option>
+          <option value="Tutoring">Tutoring</option>
+          <option value="Video Editing">Video Editing</option>
+          <option value="Writing">Writing</option>
+          <option value="Web Development">Web Development</option>
+          <option value="Other">Other Skills</option>
+        </select>
+
+        <select id="stateFilter" aria-label="Filter by Nigerian state">
+          <option value="all">All states</option>
+        </select>
+      </div>
+
+      <p id="listingStatus" class="status-message" role="status">
+        Loading services...
+      </p>
+
+      <div id="servicesGrid" class="services-grid"></div>
+
+      <div id="emptyState" class="empty-state" hidden>
+        <h3>No services found</h3>
+        <p>Try another search or choose a different category.</p>
+      </div>
+
+    </section>
+
+    <section class="how-section" id="how-it-works">
+      <p class="eyebrow">SIMPLE AND STRAIGHTFORWARD</p>
+      <h2>How Skillora Works</h2>
+
+      <div class="steps-grid">
+        <article class="step-card">
+          <span class="step-number">01</span>
+          <h3>Discover</h3>
+          <p>Search for services that match your needs.</p>
+        </article>
+
+        <article class="step-card">
+          <span class="step-number">02</span>
+          <h3>Connect</h3>
+          <p>Explore a provider's details and send a demo message.</p>
+        </article>
+
+        <article class="step-card">
+          <span class="step-number">03</span>
+          <h3>Get Started</h3>
+          <p>Discuss the work and agree on terms before proceeding.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="join-section">
+      <div>
+        <p class="eyebrow">YOUR SKILLS HAVE VALUE</p>
+        <h2>Ready to Showcase Your Skills?</h2>
+        <p>Add a sample service listing to explore how Skillora works.</p>
+      </div>
+
+      <button id="bottomPostBtn" class="button button-light">
+        Post a Service
+      </button>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <a href="#" class="logo">Skill<span>ora</span></a>
+
+    <p>Helping Nigerian students showcase their skills.</p>
+
+    <p class="footer-note">
+      Educational prototype. Sample listings are not verified job offers.
+    </p>
+
+    <p>&copy; 2026 Skillora</p>
+  </footer>
+
+  <!-- Form for adding a service -->
+  <dialog id="serviceDialog">
+    <div class="dialog-header">
+      <div>
+        <p class="eyebrow">SHOWCASE YOUR TALENT</p>
+        <h2>Post a Service</h2>
+      </div>
+
+      <button type="button" id="closeServiceBtn" class="close-button"
+        aria-label="Close form">&times;</button>
+    </div>
+
+    <form id="serviceForm">
+      <label for="providerName">Your name</label>
+      <input id="providerName" name="providerName"
+        type="text" maxlength="60" required>
+
+      <label for="serviceTitle">Service title</label>
+      <input id="serviceTitle" name="serviceTitle"
+        type="text" maxlength="80" required>
+
+      <label for="serviceCategory">Category</label>
+      <select id="serviceCategory" name="serviceCategory" required>
+        <option value="">Choose a category</option>
+        <option value="Design">Graphic Design</option>
+        <option value="Tutoring">Tutoring</option>
+        <option value="Video Editing">Video Editing</option>
+        <option value="Writing">Writing</option>
+        <option value="Web Development">Web Development</option>
+        <option value="Other">Other Skills</option>
+      </select>
+
+      <label for="servicePrice">Price in naira (₦)</label>
+      <input id="servicePrice" name="servicePrice"
+        type="number" min="0" step="100" required>
+
+      <label for="providerState">State in Nigeria</label>
+      <select id="providerState" name="providerState" required>
+        <option value="">Loading states...</option>
+      </select>
+
+      <p id="stateStatus" class="status-message" role="status">
+        Loading Nigerian states...
+      </p>
+
+      <label for="serviceDescription">Description</label>
+      <textarea id="serviceDescription" name="serviceDescription"
+        rows="4" maxlength="500" required></textarea>
+
+      <button type="submit" class="button button-primary button-full">
+        Add Sample Listing
+      </button>
+
+      <p class="form-note">
+        This version stores sample listings on this device only.
+      </p>
+    </form>
+  </dialog>
+
+  <!-- Provider details -->
+  <dialog id="detailsDialog">
+    <div class="dialog-header">
+      <h2>Service Details</h2>
+
+      <button type="button" id="closeDetailsBtn" class="close-button"
+        aria-label="Close details">&times;</button>
+    </div>
+
+    <div id="detailsContent"></div>
+
+    <button type="button" id="contactProviderBtn"
+      class="button button-primary button-full">
+      Message Provider
+    </button>
+  </dialog>
+
+  <!-- Demo messaging -->
+  <dialog id="messageDialog">
+    <div class="dialog-header">
+      <div>
+        <p class="eyebrow">DEMO CONVERSATION</p>
+        <h2 id="messageHeading">Message Provider</h2>
+      </div>
+
+      <button type="button" id="closeMessageBtn" class="close-button"
+        aria-label="Close messages">&times;</button>
+    </div>
+
+    <div id="messageList" class="message-list" aria-live="polite"></div>
+
+    <form id="messageForm" class="message-form">
+      <label for="messageInput">Your message</label>
+
+      <textarea id="messageInput" rows="2" maxlength="500"
+        placeholder="Write a message..." required></textarea>
+
+      <button type="submit" class="button button-primary button-full">
+        Send Demo Message
+      </button>
+    </form>
+
+    <p class="form-note">
+      Demo messages are not delivered to real people.
+    </p>
+  </dialog>
+
+  <script src="script.js"></script>
+</body>
+</html>
